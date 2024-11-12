@@ -29,7 +29,9 @@ To set up and run the application locally:
     npm install
     ```
 
-4. Start the development server:
+4. Copy **.env.example** to **.env**:
+
+5. Start the development server:
     ```bash
     npm run dev
     ```
