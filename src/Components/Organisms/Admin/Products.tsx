@@ -25,7 +25,7 @@ const Products = () => {
         {!isMobile && <Header />}
         <div className='p-3 mt-3 m-5'>
             <div className='mt-1'>
-                <h1 className='font-bold text-3xl'>Add New Product</h1>
+                <h1 className='font-bold text-3xl text-[#303030]'>Add New Product</h1>
             </div>
             <div className='mt-5 text-[#3B97CB]'>
                 <div className="rounded-lg flex flex-wrap md:flex-nowrap w-full gap-8">
@@ -58,13 +58,13 @@ const Products = () => {
                             categoriesQuery.isFetched ?
                                 <div>
                                     <label className="block text-sm font-medium mb-1">Category</label>
-                                    <div className="flex gap-2">
+                                    <div className="flex gap-2 flex-wrap">
                                         {
                                             categories.map((category: Category) => {
                                                 const isSelected = category.id === values.category_id
                                                 return <button type="button"
                                                     disabled={isSubmitting}
-                                                    className={`px-4 py-2 rounded-lg bg-[#CAECFF] text-sm ${isSelected ? 'bg-[#3B97CB] text-white' : ''}`}
+                                                    className={`px-4 py-2 rounded-lg bg-[#CAECFF] text-sm ${isSelected ? '!bg-[#3B97CB] text-white' : ''}`}
                                                     key={category.id}
                                                     onClick={() => setFieldValue('category_id', category.id)}>
                                                     {category.name}

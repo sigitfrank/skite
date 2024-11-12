@@ -4,9 +4,13 @@ import ArrowBack from '../Atoms/Icons/ArrowBack'
 import ChatIcon from '../Atoms/Icons/Chat'
 import { formatAmount } from '../../Helpers/formatCurrency'
 import useOrderSummary from '../../Hooks/Queries/useOrderSummary'
+import { useContext } from 'react'
+import { GlobalStateContext } from '../../Store/context'
 
 const OrderSummary = () => {
     const navigate = useNavigate()
+    const user = useContext(GlobalStateContext)?.user
+
     const {
         isFetching,
         totalOrder,
@@ -21,12 +25,12 @@ const OrderSummary = () => {
             <p className="uppercase text-white bg-[#0099EE] font-bold p-3 text-center text-3xl">Order Summary</p>
             <p className='text-right text-[#0099EE] mt-3 mr-3 uppercase'>Order #21340</p>
             <div className='p-3 mb-7'>
-                <p className='font-bold'>John Doe</p>
+                <p className='font-bold'>{user?.name}</p>
                 <small className='text-[#525252] block mb-0'>123 Pasir Ris,</small>
                 <small className='text-[#525252]'>13810, Singapore</small>
             </div>
             {
-                isFetching ? <p>Fetching products...</p> : products.map(item => {
+                isFetching ? <p className='ml-2'>Fetching products...</p> : products.map(item => {
                     return <div className="flex gap-3 cursor-pointer" key={item.id} onClick={() => navigate('/products/1')}>
                         <div className="flex-1">
                             <img src={item.image} className="w-full object-cover" />

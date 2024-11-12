@@ -44,7 +44,7 @@ const ProductDetail = () => {
                     </div>
                 </div>
                 <div className='flex-[0.5]'>
-                    <input type="text" className="w-full border !bg-gray-100 border-blue-300 rounded-lg p-2 text-gray-400 text-center" value={total} />
+                    <input type="text" className="w-full border !bg-white border-blue-300 rounded-lg p-2 text-gray-400 text-center" value={total} />
                 </div>
                 <div className='flex-1 flex justify-start'>
                     <div className='h-[30px] w-[30px] rounded-full bg-[#0099EE] flex justify-center items-center cursor-pointer' onClick={increment}>
