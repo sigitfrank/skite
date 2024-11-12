@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { CreateProductPayload } from '../Types/product';
 
 const baseUrl = import.meta.env.VITE_API_URL;
 const token = import.meta.env.VITE_API_TOKEN as string;
@@ -39,15 +40,6 @@ export async function getCategories() {
     }
 }
 
-interface CreateProductPayload {
-    name: string;
-    description: string;
-    sku: string;
-    stock: number;
-    category_id: number;
-    price: number;
-    image: string;
-}
 
 export const createProduct = async (productData: CreateProductPayload) => {
     try {
@@ -111,7 +103,7 @@ export const getAllProducts = async () => {
 
 export const getProduct = async (productId: string) => {
     try {
-        const response = await axios.get(`https://belaundry-api.sebaris.link/platform/product/${productId}`, {
+        const response = await axios.get(`${baseUrl}/product/${productId}`, {
             headers: {
                 token: token,
             },

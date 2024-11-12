@@ -1,5 +1,5 @@
 import React from 'react';
-import Card from '../Card';
+import Card from '../Atoms/Card';
 import { formatAmount } from '../../Helpers/formatCurrency';
 
 const BalanceCard: React.FC = () => {

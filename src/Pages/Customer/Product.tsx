@@ -1,4 +1,4 @@
-import Container from "../../Components/Container";
+import Container from "../../Components/Atoms/Container";
 import ProductDetail from "../../Components/Molecules/ProductDetail";
 
 const Product = () => {

@@ -3,11 +3,11 @@ import {
 } from "react-router-dom";
 import Dashboard from "../Pages/Admin/Dashboard";
 import Products from "../Pages/Admin/Products";
-import InProgress from "../Components/Admin/InProgress";
+import InProgress from "../Pages/Admin/Components/InProgress";
 import Home from "../Pages/Customer/Home";
 import Order from "../Pages/Customer/Order";
 import Product from "../Pages/Customer/Product";
-import NotFound from "../Components/Admin/NotFound";
+import NotFound from "../Components/Atoms/NotFound";
 import GlobalProvider from "../Store/GlobalProvider";
 
 export const router = createBrowserRouter([

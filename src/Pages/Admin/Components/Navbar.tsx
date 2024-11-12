@@ -1,4 +1,4 @@
-import Logo from "../Atoms/Logo"
+import Logo from "../../../Components/Atoms/Logo"
 
 const Navbar = () => {
     return (<div className='p-5 bg-white'>

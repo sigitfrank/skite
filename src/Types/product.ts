@@ -12,3 +12,13 @@ export type Product = {
     updated_at: string | null;
     user_id: number;
 }
+
+export interface CreateProductPayload {
+    name: string;
+    description: string;
+    sku: string;
+    stock: number;
+    category_id: number;
+    price: number;
+    image: string;
+}

@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom'
-import Card from '../Card'
-import NoteIcon from '../Icons/Note'
+import Card from '../Atoms/Card'
+import NoteIcon from '../Atoms/Icons/Note'
 import { formatAmount } from '../../Helpers/formatCurrency'
 
 const Invoice = () => {

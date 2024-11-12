@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom'
-import Logo from '../Atoms/Logo'
-import HomeIcon from '../Icons/Home'
-import ProductIcon from '../Icons/Product'
-import SalesIcon from '../Icons/Sales'
-import SettingIcon from '../Icons/Setting'
+import Logo from '../../../Components/Atoms/Logo'
+import HomeIcon from '../../../Components/Atoms/Icons/Home'
+import ProductIcon from '../../../Components/Atoms/Icons/Product'
+import SalesIcon from '../../../Components/Atoms/Icons/Sales'
+import SettingIcon from '../../../Components/Atoms/Icons/Setting'
 
 const menus = [
     {

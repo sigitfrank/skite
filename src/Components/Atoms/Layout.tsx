@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
-import Sidebar from './Admin/Sidebar'
+import Sidebar from '../../Pages/Admin/Components/Sidebar'
 import { useLocation } from 'react-router-dom'
-import Navbar from './Admin/Navbar'
-import useBreakpoint from '../Hooks/useBreakpoints'
+import Navbar from '../../Pages/Admin/Components/Navbar'
+import useBreakpoint from '../../Hooks/useBreakpoints'
 
 type LayoutProps = {
     children: React.ReactNode

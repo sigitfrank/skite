@@ -1,5 +1,5 @@
 import BalanceCard from "../../Components/Molecules/BalanceCard";
-import Container from "../../Components/Container";
+import Container from "../../Components/Atoms/Container";
 import Invoice from "../../Components/Molecules/Invoice";
 import ProductCard from "../../Components/Molecules/ProductCard";
 import LatestProducts from "../../Components/Molecules/LatestProducts";

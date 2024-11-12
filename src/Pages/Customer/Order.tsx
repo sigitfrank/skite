@@ -1,4 +1,4 @@
-import Container from "../../Components/Container";
+import Container from "../../Components/Atoms/Container";
 import OrderSummary from "../../Components/Molecules/OrderSummary";
 
 const Order = () => {
