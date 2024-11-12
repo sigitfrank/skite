@@ -2,14 +2,8 @@ import { useQuery } from '@tanstack/react-query';
 import { getAllProducts } from '../../Api';
 import { useNavigate } from 'react-router-dom';
 import { formatAmount } from '../../Helpers/formatCurrency';
+import { Product } from '../../Types/product';
 
-export type Product = {
-    id: number
-    name: string
-    image: string
-    price: number
-    stock: number
-}
 const LatestProducts = () => {
     const navigate = useNavigate()
 

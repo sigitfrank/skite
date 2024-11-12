@@ -3,9 +3,9 @@ import Card from '../Card'
 import ArrowBack from '../Icons/ArrowBack'
 import ChatIcon from '../Icons/Chat'
 import { useQuery } from '@tanstack/react-query'
-import { Product } from './LatestProducts'
 import { getAllProducts } from '../../Api'
 import { formatAmount } from '../../Helpers/formatCurrency'
+import { Product } from '../../Types/product'
 
 const OrderSummary = () => {
     const navigate = useNavigate()

@@ -1,12 +1,23 @@
 import { useState } from 'react'
 import ArrowBack from '../Icons/ArrowBack'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { formatAmount } from '../../Helpers/formatCurrency'
-
+import { useQuery } from '@tanstack/react-query'
+import { getProduct } from '../../Api'
+import { Product } from '../../Types/product'
 
 const ProductDetail = () => {
     const navigate = useNavigate()
+    const params = useParams()
     const [total, setTotal] = useState(0)
+
+    const productQuery = useQuery<{ response: Product }>({
+        queryKey: ['product', params.id],
+        queryFn: () => getProduct(params.id as string),
+        enabled: Boolean(params.id)
+    });
+
+    const productDetail = productQuery.data?.response
 
     const increment = () => setTotal(prev => prev + 1)
     const decrement = () => setTotal(prev => prev - 1 < 0 ? 0 : prev - 1)
@@ -23,10 +34,10 @@ const ProductDetail = () => {
             </div>
 
             <div className='mt-2 p-4'>
-                <span className='text-[#0099EE] bg-[#CAECFF] p-2 rounded-md'>Dry Clean</span>
+                <span className='text-[#0099EE] bg-[#CAECFF] p-2 rounded-md'>{productDetail?.name}</span>
                 <h1 className='text-4xl font-bold text-[#0099EE] mt-3'>T - Shirt</h1>
-                <span className='text-[#0099EE] font-semibold mb-3 block text-lg'>{formatAmount(6)}/pc</span>
-                <p className='text-[#838383]'>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quis doloribus minima qui aspernatur. Accusamus cumque aspernatur enim eos voluptate, praesentium itaque aliquid nam facere neque optio ad voluptatum numquam debitis rerum minima odit dolores explicabo consectetur deleniti totam. Sit ut laboriosam ratione mollitia doloribus repellat laborum fugiat beatae quis labore?</p>
+                <span className='text-[#0099EE] font-semibold mb-3 block text-lg'>{formatAmount(productDetail?.price ?? 0)}/pc</span>
+                <p className='text-[#838383]'>{productDetail?.description}</p>
             </div>
 
             <div className='p-4 flex gap-3 items-center justify-center'>

@@ -18,7 +18,7 @@ export async function getUser() {
 
         return response.data;
     } catch (error) {
-        console.error("Fetch error:", error);
+        console.error("Error fetching user:", error);
         throw error;
     }
 }
@@ -34,7 +34,7 @@ export async function getCategories() {
 
         return response.data;
     } catch (error) {
-        console.error("Fetch error:", error);
+        console.error("Error fetching categoris:", error);
         throw error;
     }
 }
@@ -105,6 +105,21 @@ export const getAllProducts = async () => {
         return response.data;
     } catch (error) {
         console.error('Error fetching products:', error);
+        throw error;
+    }
+};
+
+export const getProduct = async (productId: string) => {
+    try {
+        const response = await axios.get(`https://belaundry-api.sebaris.link/platform/product/${productId}`, {
+            headers: {
+                token: token,
+            },
+        });
+
+        return response.data;
+    } catch (error) {
+        console.error('Error fetching product:', error);
         throw error;
     }
 };
