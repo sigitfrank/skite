@@ -8,15 +8,18 @@ import Home from "../Pages/Customer/Home";
 import Order from "../Pages/Customer/Order";
 import Product from "../Pages/Customer/Product";
 import NotFound from "../Components/Admin/NotFound";
+import GlobalProvider from "../Store/GlobalProvider";
 
 export const router = createBrowserRouter([
   {
     path: "/",
-    element: <Dashboard />,
+    element: <GlobalProvider>
+      <Dashboard />
+    </GlobalProvider>,
   },
   {
     path: "/products",
-    element: <Products />,
+    element: <GlobalProvider><Products /></GlobalProvider>,
   },
   {
     path: "/sales",
@@ -28,15 +31,15 @@ export const router = createBrowserRouter([
   },
   {
     path: "/shop",
-    element: <Home />,
+    element: <GlobalProvider><Home /></GlobalProvider>,
   },
   {
     path: "/order",
-    element: <Order />,
+    element: <GlobalProvider><Order /></GlobalProvider>,
   },
   {
     path: "/products/:id",
-    element: <Product />,
+    element: <GlobalProvider><Product /></GlobalProvider>,
   },
   {
     path: "*",
