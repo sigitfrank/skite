@@ -7,7 +7,7 @@ export async function getUser() {
     try {
         const response = await axios.get(`${baseUrl}/user/info`, {
             headers: {
-                "token": token,
+                token: token,
                 "Content-Type": "application/json"
             },
             data: {
@@ -27,7 +27,7 @@ export async function getCategories() {
     try {
         const response = await axios.get(`${baseUrl}/product/categories`, {
             headers: {
-                "token": token,
+                token: token,
                 "Content-Type": "application/json"
             },
         });
@@ -82,7 +82,7 @@ export const getProductSoldReport = async () => {
     try {
         const response = await axios.get(`${baseUrl}/product/report`, {
             headers: {
-                'token': token,
+                token: token,
                 'Content-Type': 'application/json',
             }
         });
@@ -90,6 +90,21 @@ export const getProductSoldReport = async () => {
         return response.data;
     } catch (error) {
         console.error('Error fetching product sold report:', error);
+        throw error;
+    }
+};
+
+
+export const getAllProducts = async () => {
+    try {
+        const response = await axios.get(`${baseUrl}/product`, {
+            headers: {
+                token: token,
+            },
+        });
+        return response.data;
+    } catch (error) {
+        console.error('Error fetching products:', error);
         throw error;
     }
 };

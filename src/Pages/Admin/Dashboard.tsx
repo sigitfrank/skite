@@ -97,13 +97,14 @@ const Dashboard = () => {
                     <span>Value</span>
                 </div>
                 {
-                    reportQuery.data?.map((item: Report, index: number) => {
+                    reportQuery.isFetched ? reportQuery.data?.map((item: Report, index: number) => {
                         const alphabet = String.fromCharCode(ASCIIletterA + (index % totalAlphabet));
                         return <div className={`mt-2 p-3 flex justify-between cursor-pointer hover:bg-[#F2F7FB]`} key={index}>
                             <span>Item {alphabet}</span>
                             <span>{item.total}</span>
                         </div>
                     })
+                        : <p>Fetching reports...</p>
                 }
             </div>
         </div>
