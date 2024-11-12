@@ -25,7 +25,7 @@ const OrderSummary = () => {
             <p className="uppercase text-white bg-[#0099EE] font-bold p-3 text-center text-3xl">Order Summary</p>
             <p className='text-right text-[#0099EE] mt-3 mr-3 uppercase'>Order #21340</p>
             <div className='p-3 mb-7'>
-                <p className='font-bold'>{user?.name}</p>
+                <p className='font-bold text-[#303030]'>{user?.name}</p>
                 <small className='text-[#525252] block mb-0'>123 Pasir Ris,</small>
                 <small className='text-[#525252]'>13810, Singapore</small>
             </div>
