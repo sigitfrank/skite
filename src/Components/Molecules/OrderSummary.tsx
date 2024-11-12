@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom'
 import Card from '../Card'
 import ArrowBack from '../Icons/ArrowBack'
 import ChatIcon from '../Icons/Chat'
@@ -5,8 +6,10 @@ import ChatIcon from '../Icons/Chat'
 const items = [`$ 180.00`, `$ 10.00`, `$ 14.00`]
 
 const OrderSummary = () => {
+    const navigate = useNavigate()
+
     return <div className="flex flex-col items-center justify-center my-5">
-        <div className='w-[350px] mb-7 cursor-pointer'>
+        <div className='w-[350px] mb-7 cursor-pointer' onClick={() => navigate(-1)}>
             <ArrowBack fill='#0099EE' />
         </div>
         <Card className='!h-auto'>
@@ -19,7 +22,7 @@ const OrderSummary = () => {
             </div>
             {
                 items.map(item => {
-                    return <div className="flex gap-3" key={item}>
+                    return <div className="flex gap-3 cursor-pointer" key={item} onClick={() => navigate('/products/1')}>
                         <div className="flex-1">
                             <img src="/images/p.png" className="w-full object-cover" />
                         </div>
