@@ -31,7 +31,7 @@ const OrderSummary = () => {
             </div>
             {
                 isFetching ? <p className='ml-2'>Fetching products...</p> : products.map(item => {
-                    return <div className="flex gap-3 cursor-pointer" key={item.id} onClick={() => navigate('/products/1')}>
+                    return <div className="flex gap-3 cursor-pointer" key={item.id} onClick={() => navigate(`/products/${item.id}`)}>
                         <div className="flex-1">
                             <img src={item.image} className="w-full object-cover" />
                         </div>
