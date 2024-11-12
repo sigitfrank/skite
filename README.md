@@ -68,13 +68,15 @@ The project follows **Atomic Design principles**, which means the structure is b
   - **/Molecules**: Collections of atoms that form functional UI units.
   - **/Organisms**: More complex components that are composed of atoms and molecules.
   
+- **/Constants**: This folder contains constant variable for entire app.
+
 - **/Helpers**: This folder contains custom utility functions or logic used throughout the app.
 
 - **/Hooks**: Contains custom React hooks for encapsulating reusable logic.
   
 - **/Lib**: Holds library-specific utilities. This is where React Query is declared.
 
-- **/Routes**: Manages Pages interactions..
+- **/Routes**: Manages Pages interactions.
 
 - **/Store**: This folder houses the relevant files for managing and sharing state across the app.
 
@@ -85,5 +87,5 @@ The project follows **Atomic Design principles**, which means the structure is b
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-### Thanks:
-- Expressing gratitude for the frontend test opportunity.
+### Thanks
+Expressing gratitude for the frontend test opportunity 🙏.
