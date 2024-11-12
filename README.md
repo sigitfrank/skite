@@ -1,4 +1,4 @@
-# Your App Name
+# Skite
 
 This is a web application built with **React.js**, **TypeScript**, **React Query**, **Formik**, **Yup**, and **Tailwind CSS**. The app is designed to provide both an **Admin Dashboard** and a **Customer Shop**.
 
