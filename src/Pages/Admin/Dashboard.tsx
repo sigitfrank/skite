@@ -1,48 +1,71 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Layout from '../../Components/Layout'
 import ReactApexChart from 'react-apexcharts'
 import useBreakpoint from '../../Hooks/useBreakpoints'
 import Header from '../../Components/Admin/Header'
+import { useQuery } from '@tanstack/react-query'
+import { getProductSoldReport } from '../../Api'
+import { formatDate } from '../../Helpers/formatDate'
 
-const items = [
-    {
-        id: 1,
-        label: 'Item A',
-        value: '$ 120.00'
-    },
-    {
-        id: 2,
-        label: 'Item B',
-        value: '$ 80.00'
-    },
-    {
-        id: 3,
-        label: 'Item C',
-        value: '$ 76.00'
-    },
-]
 
 const initChart = {
     series: [{
-        name: 'Value',
-        data: [2.3, 3.1, 4.0, 10.1, 4.0, 3.6, 3.2, 2.3]
+        name: 'Total Sold',
+        data: []
     }],
     options: {
         chart: {
             id: "basic-bar"
         },
         xaxis: {
-            categories: ['11/05', '12/05', '13/05', '14/05', '15/05', '16/05', '17/05', '18/05']
+            categories: []
         }
     },
+}
+
+const totalAlphabet = 26
+const ASCIIletterA = 65
+
+type Report = {
+    created_at: string
+    income: string
+    total: number
 }
 
 const Dashboard = () => {
     const breakpoint = useBreakpoint()
     const isMobile = breakpoint === 'xs'
 
-    const [chart] = useState(initChart)
-    const [selectedItem, setSelectedItem] = useState<typeof items[number] | null>(null)
+    const [chart, setChart] = useState(initChart)
+
+    const reportQuery = useQuery({
+        queryKey: ['productSold'],
+        queryFn: getProductSoldReport
+    })
+
+    useEffect(() => {
+        if (!reportQuery.data) return
+        const newData = reportQuery.data.map((d: Report) => d.total)
+        const newCategories = reportQuery.data.map((d: Report) => formatDate(d.created_at))
+
+        const newChart = {
+            series: [{
+                name: 'Total Sold',
+                data: newData
+            }],
+            options: {
+                chart: {
+                    id: "basic-bar"
+                },
+                xaxis: {
+                    categories: newCategories
+                }
+            },
+        }
+        setChart(newChart)
+    }, [reportQuery.data])
+
+
 
     return <Layout>
         {!isMobile && <Header title='Home' />}
@@ -74,10 +97,11 @@ const Dashboard = () => {
                     <span>Value</span>
                 </div>
                 {
-                    items.map((item) => {
-                        return <div className={`mt-2 p-3 flex justify-between ${selectedItem?.id === item.id ? 'bg-[#F2F7FB]' : ''}`} key={item.id} onClick={() => setSelectedItem(item)}>
-                            <span>{item.label}</span>
-                            <span>{item.value}</span>
+                    reportQuery.data?.map((item: Report, index: number) => {
+                        const alphabet = String.fromCharCode(ASCIIletterA + (index % totalAlphabet));
+                        return <div className={`mt-2 p-3 flex justify-between cursor-pointer hover:bg-[#F2F7FB]`} key={index}>
+                            <span>Item {alphabet}</span>
+                            <span>{item.total}</span>
                         </div>
                     })
                 }

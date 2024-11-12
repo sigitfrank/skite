@@ -77,3 +77,19 @@ export const createProduct = async (productData: CreateProductPayload) => {
     }
 };
 
+
+export const getProductSoldReport = async () => {
+    try {
+        const response = await axios.get(`${baseUrl}/product/report`, {
+            headers: {
+                'token': token,
+                'Content-Type': 'application/json',
+            }
+        });
+
+        return response.data;
+    } catch (error) {
+        console.error('Error fetching product sold report:', error);
+        throw error;
+    }
+};
