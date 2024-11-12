@@ -17,6 +17,7 @@ export const GlobalStateProvider: React.FC<GlobalStateProviderProps> = ({ childr
         setUser(userQuery.data?.response)
     }, [userQuery.data?.response])
 
+    if (userQuery.isFetching) return <p>Fetching user profile...</p>
 
     return (
         <GlobalStateContext.Provider value={{ user, setUser }}>
