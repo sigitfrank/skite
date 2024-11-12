@@ -9,7 +9,7 @@ type CardProps = {
 const Card = ({ children, className = '', style }: CardProps) => {
     return (
         <div
-            className={`bg-white rounded-lg shadow-md w-[350px] h-36 ${className}`}
+            className={`bg-white rounded-lg shadow-md w-[350px] overflow-hidden h-36 ${className}`}
             style={style}
         >
             {children}

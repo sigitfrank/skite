@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import Card from '../Card';
 
 const products = [0, 20]
