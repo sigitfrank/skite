@@ -1,9 +1,10 @@
 import {
   createBrowserRouter,
 } from "react-router-dom";
-import Dashboard from "../Pages/Dashboard";
-import Products from "../Pages/Products";
+import Dashboard from "../Pages/Admin/Dashboard";
+import Products from "../Pages/Admin/Products";
 import InProgress from "../Components/Admin/InProgress";
+import Home from "../Pages/Customer/Home";
 
 export const router = createBrowserRouter([
   {
@@ -21,5 +22,9 @@ export const router = createBrowserRouter([
   {
     path: "/settings",
     element: <InProgress />,
+  },
+  {
+    path: "/shop",
+    element: <Home />,
   },
 ]);

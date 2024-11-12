@@ -1,8 +1,8 @@
 import { useState } from 'react'
-import ImageIcon from '../Components/Icons/Image'
-import Layout from '../Components/Layout'
-import useBreakpoint from '../Hooks/useBreakpoints'
-import Header from '../Components/Admin/Header'
+import ImageIcon from '../../Components/Icons/Image'
+import Layout from '../../Components/Layout'
+import useBreakpoint from '../../Hooks/useBreakpoints'
+import Header from '../../Components/Admin/Header'
 
 const categories = [
     {

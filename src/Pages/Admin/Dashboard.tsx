@@ -1,8 +1,8 @@
 import { useState } from 'react'
-import Layout from '../Components/Layout'
+import Layout from '../../Components/Layout'
 import ReactApexChart from 'react-apexcharts'
-import useBreakpoint from '../Hooks/useBreakpoints'
-import Header from '../Components/Admin/Header'
+import useBreakpoint from '../../Hooks/useBreakpoints'
+import Header from '../../Components/Admin/Header'
 
 const items = [
     {
