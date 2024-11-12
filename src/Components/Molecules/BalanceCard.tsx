@@ -1,5 +1,6 @@
 import React from 'react';
 import Card from '../Card';
+import { formatAmount } from '../../Helpers/formatCurrency';
 
 const BalanceCard: React.FC = () => {
     return (
@@ -13,7 +14,7 @@ const BalanceCard: React.FC = () => {
                     <div className="absolute top-4 left-[8.5rem] w-6 h-6 bg-red-400 rounded-full" />
                     <div className="relative z-10 text-center">
                         <p className="text-gray-600 font-medium">Your Balance</p>
-                        <p className="text-3xl font-bold text-[#0099EE]">$ 200.00</p>
+                        <p className="text-3xl font-bold text-[#0099EE]">{formatAmount(200)}</p>
                     </div>
                 </Card>
             </div>

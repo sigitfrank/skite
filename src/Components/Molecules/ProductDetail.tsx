@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import ArrowBack from '../Icons/ArrowBack'
 import { useNavigate } from 'react-router-dom'
+import { formatAmount } from '../../Helpers/formatCurrency'
 
 
 const ProductDetail = () => {
@@ -24,7 +25,7 @@ const ProductDetail = () => {
             <div className='mt-2 p-4'>
                 <span className='text-[#0099EE] bg-[#CAECFF] p-2 rounded-md'>Dry Clean</span>
                 <h1 className='text-4xl font-bold text-[#0099EE] mt-3'>T - Shirt</h1>
-                <span className='text-[#0099EE] font-semibold mb-3 block text-lg'>$ 6.00/pc</span>
+                <span className='text-[#0099EE] font-semibold mb-3 block text-lg'>{formatAmount(6)}/pc</span>
                 <p className='text-[#838383]'>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quis doloribus minima qui aspernatur. Accusamus cumque aspernatur enim eos voluptate, praesentium itaque aliquid nam facere neque optio ad voluptatum numquam debitis rerum minima odit dolores explicabo consectetur deleniti totam. Sit ut laboriosam ratione mollitia doloribus repellat laborum fugiat beatae quis labore?</p>
             </div>
 

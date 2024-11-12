@@ -2,11 +2,24 @@ import { useNavigate } from 'react-router-dom'
 import Card from '../Card'
 import ArrowBack from '../Icons/ArrowBack'
 import ChatIcon from '../Icons/Chat'
-
-const items = [`$ 180.00`, `$ 10.00`, `$ 14.00`]
+import { useQuery } from '@tanstack/react-query'
+import { Product } from './LatestProducts'
+import { getAllProducts } from '../../Api'
+import { formatAmount } from '../../Helpers/formatCurrency'
 
 const OrderSummary = () => {
     const navigate = useNavigate()
+
+    const productsQuery = useQuery<{ response: Product[] }>({
+        queryKey: ['products'],
+        queryFn: getAllProducts
+    })
+    const products = productsQuery.data?.response ?? []
+    const slicedProducts = products.slice(0, 3)
+
+    const totalOrder = slicedProducts.reduce((acc, current) => {
+        return acc + current.price
+    }, 0)
 
     return <div className="flex flex-col items-center justify-center my-5">
         <div className='w-[350px] mb-7 cursor-pointer' onClick={() => navigate(-1)}>
@@ -21,26 +34,26 @@ const OrderSummary = () => {
                 <small className='text-[#525252]'>13810, Singapore</small>
             </div>
             {
-                items.map(item => {
-                    return <div className="flex gap-3 cursor-pointer" key={item} onClick={() => navigate('/products/1')}>
+                slicedProducts.map(item => {
+                    return <div className="flex gap-3 cursor-pointer" key={item.id} onClick={() => navigate('/products/1')}>
                         <div className="flex-1">
-                            <img src="/images/p.png" className="w-full object-cover" />
+                            <img src={item.image} className="w-full object-cover" />
                         </div>
                         <div className="flex-[1.1]">
-                            <h3 className="text-[#525252] font-semibold">Bag of Laundry</h3>
-                            <span className="text-[#0099EE]">Qty 2</span>
+                            <h3 className="text-[#525252] font-semibold">{item.name}</h3>
+                            <span className="text-[#0099EE]">Qty {item.stock}</span>
                         </div>
                         <div className="flex-1">
                             <small className="text-[#535353] block">Total</small>
-                            <span className="text-[#0099EE] font-semibold">{item}</span>
+                            <span className="text-[#0099EE] font-semibold">{formatAmount(item.price)}</span>
                         </div>
                     </div>
                 })
             }
 
-            <div className='flex justify-between bg-[#0099EE] font-semibold p-3 text-white'>
+            <div className='flex justify-between bg-[#0099EE] font-semibold p-3 text-white mt-5'>
                 <span>Total Order</span>
-                <span>$ 204.00</span>
+                <span>{formatAmount(totalOrder)}</span>
             </div>
 
         </Card>

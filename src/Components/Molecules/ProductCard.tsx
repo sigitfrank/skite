@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 import Card from '../Card'
+import { formatAmount } from '../../Helpers/formatCurrency'
 
 const ProductCard = () => {
     const navigate = useNavigate()
@@ -7,10 +8,10 @@ const ProductCard = () => {
         <div>
             <p className="uppercase text-[#3B97CB] mb-4 font-bold">Your most ordered</p>
             <Card className='h-[185px] relative text-white'>
-                <img src="/images/p2.png" className="w-full absolute inset-0 h-full object-cover cursor-pointer" onClick={() => navigate('/order')} />
+                <img src="/images/p2.png" className="w-full absolute inset-0 h-full object-cover cursor-pointer" onClick={() => navigate(`/products/${1}`)} />
                 <div className='absolute z-10 bottom-0 p-3 bg-gradient-to-t from-[#0099EE] to-transparent w-full'>
                     <h3 className='font-bold text-2xl'>Dry Cleaning</h3>
-                    <p className='font-semibold'>12x | total of $ 4.000</p>
+                    <p className='font-semibold'>12x | total of {formatAmount(400)}</p>
                 </div>
             </Card>
         </div>

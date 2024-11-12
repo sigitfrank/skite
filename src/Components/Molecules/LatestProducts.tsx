@@ -1,7 +1,9 @@
 import { useQuery } from '@tanstack/react-query';
 import { getAllProducts } from '../../Api';
+import { useNavigate } from 'react-router-dom';
+import { formatAmount } from '../../Helpers/formatCurrency';
 
-type Product = {
+export type Product = {
     id: number
     name: string
     image: string
@@ -9,8 +11,10 @@ type Product = {
     stock: number
 }
 const LatestProducts = () => {
+    const navigate = useNavigate()
+
     const productsQuery = useQuery<{ response: Product[] }>({
-        queryKey: ['productSold'],
+        queryKey: ['products'],
         queryFn: getAllProducts
     })
     const products = productsQuery.data?.response ?? []
@@ -22,9 +26,9 @@ const LatestProducts = () => {
                 <div className="carousel carousel-center rounded-box max-w-md space-x-4">
                     {
                         products.map((p, index) => {
-                            return <div className="carousel-item">
+                            return <div className="carousel-item cursor-pointer" key={index} onClick={() => navigate(`/products/${p.id}`)} >
                                 <div
-                                    className="relative text-white w-[200px] h-[250px] transition-all duration-500 !inline-block"
+                                    className="relative text-white w-[230px] h-[250px] transition-all duration-500 !inline-block"
                                     key={index}
                                 >
                                     <img
@@ -33,7 +37,7 @@ const LatestProducts = () => {
                                     />
                                     <div className="absolute z-10 bottom-0 p-3 bg-gradient-to-t from-[#0099EE] to-transparent w-full">
                                         <h3 className="font-bold text-2xl">{p.name}</h3>
-                                        <p className="font-semibold">{p.stock}x | total of $ {p.price}</p>
+                                        <p className="font-semibold">{p.stock}x | total of {formatAmount(p.price)}</p>
                                     </div>
                                 </div>
                             </div>
