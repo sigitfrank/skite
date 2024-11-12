@@ -1,16 +1,7 @@
-import Container from "../../Components/Atoms/Container";
-import ProductDetail from "../../Components/Molecules/ProductDetail";
+import Product from "../../Components/Organisms/Customer/Product";
 
-const Product = () => {
-    return (
-        <Container>
-            <div className="flex justify-center">
-                <div className="w-full sm:w-6/12 lg:w-1/2 relative">
-                    <ProductDetail />
-                </div>
-            </div>
-        </Container>
-    );
+const ProductPage = () => {
+    return <Product />
 };
 
-export default Product;
+export default ProductPage;

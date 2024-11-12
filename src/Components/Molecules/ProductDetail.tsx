@@ -1,30 +1,22 @@
-import { useState } from 'react'
 import ArrowBack from '../Atoms/Icons/ArrowBack'
-import { useNavigate, useParams } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { formatAmount } from '../../Helpers/formatCurrency'
-import { useQuery } from '@tanstack/react-query'
-import { getProduct } from '../../Api'
-import { Product } from '../../Types/product'
 import NotFound from '../Atoms/NotFound'
+import useProductDetail from '../../Hooks/Queries/useProductDetail'
 
 const ProductDetail = () => {
     const navigate = useNavigate()
-    const params = useParams()
-    const [total, setTotal] = useState(0)
+    const {
+        increment,
+        decrement,
+        productDetail,
+        total,
+        isFetching,
+        isFetched,
+    } = useProductDetail()
 
-    const productQuery = useQuery<{ response: Product }>({
-        queryKey: ['product', params.id],
-        queryFn: () => getProduct(params.id as string),
-        enabled: Boolean(params.id)
-    });
-
-    const productDetail = productQuery.data?.response
-
-    const increment = () => setTotal(prev => prev + 1)
-    const decrement = () => setTotal(prev => prev - 1 < 0 ? 0 : prev - 1)
-
-    if (productQuery.isFetching) return null
-    if (productQuery.isFetched)
+    if (isFetching) return null
+    if (isFetched)
         if (!productDetail) return <NotFound />
 
     return <div className="flex flex-col items-center justify-center">

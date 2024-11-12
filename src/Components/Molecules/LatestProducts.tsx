@@ -1,17 +1,10 @@
-import { useQuery } from '@tanstack/react-query';
-import { getAllProducts } from '../../Api';
 import { useNavigate } from 'react-router-dom';
 import { formatAmount } from '../../Helpers/formatCurrency';
-import { Product } from '../../Types/product';
+import useLatestProducts from '../../Hooks/Queries/useLatestProducts';
 
 const LatestProducts = () => {
     const navigate = useNavigate()
-
-    const productsQuery = useQuery<{ response: Product[] }>({
-        queryKey: ['products'],
-        queryFn: getAllProducts
-    })
-    const products = productsQuery.data?.response ?? []
+    const { products, isFetching } = useLatestProducts()
 
     return (
         <div className="flex flex-col justify-center items-center mt-5 ">
@@ -19,7 +12,7 @@ const LatestProducts = () => {
                 <p className="uppercase text-[#3B97CB] mb-4 font-bold text-left">Our Latest Product</p>
                 <div className="carousel carousel-center rounded-box max-w-md space-x-4">
                     {
-                        products.map((p, index) => {
+                        isFetching ? <p>Fetching products...</p> : products.map((p, index) => {
                             return <div className="carousel-item cursor-pointer" key={index} onClick={() => navigate(`/products/${p.id}`)} >
                                 <div
                                     className="relative text-white w-[230px] h-[250px] transition-all duration-500 !inline-block"

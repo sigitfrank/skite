@@ -1,6 +1,6 @@
 import { useContext } from 'react'
-import UserIcon from '../../../Components/Atoms/Icons/User'
-import { GlobalStateContext } from '../../../Store/context'
+import { GlobalStateContext } from '../../../../Store/context'
+import UserIcon from '../../../Atoms/Icons/User'
 
 type HeaderProps = {
     title?: string
